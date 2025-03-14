@@ -2,6 +2,7 @@ package com.sachinsk.flight_booking_transaction.service;
 
 import com.sachinsk.flight_booking_transaction.entity.Payment;
 import com.sachinsk.flight_booking_transaction.entity.User;
+import com.sachinsk.flight_booking_transaction.helper.TicketUtil;
 import com.sachinsk.flight_booking_transaction.request.TicketBooking;
 import com.sachinsk.flight_booking_transaction.respository.PaymentRepository;
 import com.sachinsk.flight_booking_transaction.respository.UserRepository;
@@ -16,6 +17,8 @@ public class FlightBookingImpl implements FlightBooking {
     @Override
     public String bookFlight(TicketBooking ticketBooking) {
         User userResponse = this.userRepository.save(ticketBooking.getUser());
+        //Validation for bank balance
+        TicketUtil.haveSufficientBalance(ticketBooking.getUser().getBankBalance(), ticketBooking.getPayment().getPrice());
         Payment paymentRequest = ticketBooking.getPayment();
         paymentRequest.setUserId(userResponse.getId());
         this.paymentRepository.save(paymentRequest);
