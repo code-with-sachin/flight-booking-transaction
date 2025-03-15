@@ -3,7 +3,7 @@ package com.sachinsk.flight_booking_transaction.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "USER_TABLE")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

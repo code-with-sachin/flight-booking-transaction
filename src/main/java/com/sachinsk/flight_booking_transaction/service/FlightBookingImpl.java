@@ -7,7 +7,9 @@ import com.sachinsk.flight_booking_transaction.request.TicketBooking;
 import com.sachinsk.flight_booking_transaction.respository.PaymentRepository;
 import com.sachinsk.flight_booking_transaction.respository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FlightBookingImpl implements FlightBooking {
     @Autowired
     private PaymentRepository paymentRepository;
